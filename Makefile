@@ -6,7 +6,7 @@
 #    By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/03 15:48:47 by tbouder           #+#    #+#              #
-#    Updated: 2015/12/15 14:30:20 by tbouder          ###   ########.fr        #
+#    Updated: 2016/01/04 10:49:04 by tbouder          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,4 +46,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-

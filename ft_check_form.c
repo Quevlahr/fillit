@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 13:42:02 by tbouder           #+#    #+#             */
-/*   Updated: 2015/12/15 12:59:55 by tbouder          ###   ########.fr       */
+/*   Updated: 2015/12/17 16:22:19 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,6 @@ static void			ft_check_helper(char *str, int i)
 static void			ft_check_form_lines_columns(char *str)
 {
 	int		i;
-	int		cc;
-	int		ln;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n' && (str[i + 1] == '\n' || str[i + 1] == '\0'))
-		{
-			cc = 0;
-			ln = 0;
-			if (cc != 4 || ln != 4)
-				ft_error();
-		}
-		else if (str[i] == '.' || str[i] == '#')
-		{
-			i++;
-			cc++;
-		}
-		else if (str[i] == '\n' && cc != 4 || ln != 4)
-			ft_error();
-		else if (str[i] == '\n')
-		{
-			i++;
-			cc = 0;
-			ln++;
-		}
-		else
-			ft_error();
-	}
-
-
-	int		i;
 	int		len;
 	int		column;
 
@@ -81,6 +49,8 @@ static void			ft_check_form_lines_columns(char *str)
 			ft_error();
 		else if (str[i] == '\n' && column == 0 && len == 4)
 			len = 0;
+		else if (len > 3)
+			ft_error();
 		column == 4 ? len++ : 0;
 		column == 4 ? column = 0 : 0;
 		ft_check_helper(str, i);

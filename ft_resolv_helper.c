@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 18:10:00 by tbouder           #+#    #+#             */
-/*   Updated: 2015/12/17 11:07:02 by tbouder          ###   ########.fr       */
+/*   Updated: 2015/12/17 15:50:52 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,12 @@ void			ft_checkplace_helper(int *i, int *j, int len, char *s)
 
 	count = 0;
 	r_size = (len < 4) ? len : 4;
-	if (len <= 3)
+	if (len <= 4)
 	{
 		count = ft_count_pts(s, i);
 		len == 2 ? count -= 3 : 0;
 		len == 3 ? count -= 2 : 0;
+		len == 4 ? count -= 1 : 0;
 		*j += count;
 		*i -= 1;
 	}

@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 15:20:20 by quroulon          #+#    #+#             */
-/*   Updated: 2015/12/17 11:27:51 by tbouder          ###   ########.fr       */
+/*   Updated: 2015/12/17 16:01:53 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char			*ft_strdup(const char *s1);
 char			*ft_strcpy(char *dst, const char *src);
 void			ft_strdel(char **as);
 char			*ft_strtrim_char(char const *s, char c);
+char			*ft_strstr(const char *s1, const char *s2);
 
 void			ft_check_form_launcher(char *str);
 void			ft_check_content_launcher(char **str, int nb_tetribox);

@@ -6,11 +6,30 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 13:19:35 by tbouder           #+#    #+#             */
-/*   Updated: 2015/12/17 10:55:18 by tbouder          ###   ########.fr       */
+/*   Updated: 2015/12/18 14:57:16 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+static int		ft_nigma(char *str)
+{
+	if (ft_strstr(str, "..#.##..#..") == NULL)
+		return (1);
+	else if (ft_strstr(str, "..#..##.#..") == NULL)
+		return (1);
+	else if (ft_strstr(str, "...#.##.#...") == NULL)
+		return (1);
+	else if (ft_strstr(str, ".##.#...#..") == NULL)
+		return (1);
+	else if (ft_strstr(str, "..#...#.##.") == NULL)
+		return (1);
+	else if (ft_strstr(str, "..#.##...#.") == NULL)
+		return (1);
+	else if (ft_strstr(str, ".#...##.#..") == NULL)
+		return (1);
+	return (0);
+}
 
 /*
 ** It is the launcher for the functions in ft_extract_form.c. All the forms
@@ -30,7 +49,6 @@ void			ft_extract_forms(char **str, int nb_tetribox, char **forms)
 		i++;
 		c++;
 	}
-	free(str[i]);
 }
 
 /*
@@ -45,21 +63,11 @@ char			*ft_forme(char *str, char c)
 	char	*form;
 
 	i = 0;
-	if (str[i + 2] == '#' && str[i + 3] == '#' && str[i + 4] == '#')
-		form = (char *)ft_strdup("..#.###.");
-	else if (str[i + 3] == '#' && str[i + 4] == '#' && str[i + 5] == '#')
-		form = (char *)ft_strdup(".#..###.");
-	else if (str[i + 3] == '#' && str[i + 4] == '#' && str[i + 7] == '#')
-		form = (char *)ft_strdup(".#..##..#");
-	else if (str[i + 3] == '#' && str[i + 4] == '#' && str[i + 8] == '#')
-		form = (char *)ft_strdup(".#..##...#");
-	else if (str[i + 4] == '#' && str[i + 7] == '#' && str[i + 8] == '#')
-		form = (char *)ft_strdup(".#...#..##");
-	else if (str[i + 1] == '#' && str[i + 3] == '#' && str[i + 4] == '#')
-		form = (char *)ft_strdup(".##...##");
+	form = NULL;
+	if (ft_nigma(str) == 0)
+		ft_error();
 	else
 		form = ft_strtrim_char(str, '.');
-	i = 0;
 	while (form[i])
 	{
 		form[i] == '#' ? form[i] = c : 0;

@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 15:52:42 by tbouder           #+#    #+#             */
-/*   Updated: 2015/12/17 11:51:52 by tbouder          ###   ########.fr       */
+/*   Updated: 2015/12/17 18:44:42 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,14 @@ static int			ft_launcher(char *string)
 
 	if ((size.tetri = (ft_strlen(string) + 1) / 21) > 26)
 		ft_error();
+	if (size.tetri == 0)
+		ft_error();
 	size.squ = ft_size_grid(ft_strlen((string) + 1) / 21);
-	splited_string = ft_split_string(string, size.tetri);
 	forms = (char **)malloc(sizeof(char *) * ft_strlen((string) + 1) / 21);
 	grid = ft_memalloc(size.squ * size.squ + 1);
 	ft_memset(grid, '.', size.squ * size.squ);
 	ft_check_form_launcher(string);
+	splited_string = ft_split_string(string, size.tetri);
 	ft_check_content_launcher(splited_string, size.tetri);
 	ft_extract_forms(splited_string, ft_strlen((string) + 1) / 21, forms);
 	ft_launch_resolv(grid, forms, size);

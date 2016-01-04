@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 15:50:24 by tbouder           #+#    #+#             */
-/*   Updated: 2015/12/15 11:24:36 by tbouder          ###   ########.fr       */
+/*   Updated: 2015/12/18 14:58:27 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,27 +48,25 @@ static void		ft_check_nb_diaiz(char **str, int nb_tetribox)
 
 static int		ft_check_each_tetribox(char *s, int n, int p)
 {
-	if (s[p] == '#' && s[p + 1] == '#' && n < 4 && (p + 1) % 4 != 0)
+	if (s[p] == '#' && s[p + 1] == '#' && n < 4 && (p + 1) % 4 != 0 && n++)
 	{
-		n++;
 		n = ft_check_each_tetribox(s, n, p + 1);
 		return (n == 4) ? n : -1;
 	}
-	else if (s[p] == '#' && s[p + 2] == '#' && n < 4 && (p / 4 != (p + 2) / 4))
+	else if (s[p] == '#' && s[p + 2] == '#' && n < 4 && (p / 4 != (p + 2) / 4)
+		&& (s[p + 3] == '#' || s[p - 1] == '#') && n++)
 	{
-		n++;
 		n = ft_check_each_tetribox(s, n, p + 2);
 		return (n == 4) ? n : -1;
 	}
-	else if (s[p] == '#' && s[p + 3] == '#' && n < 4 && (p / 4 != (p + 3) / 4))
+	else if (s[p] == '#' && s[p + 3] == '#' && n < 4 && (p / 4 != (p + 3) / 4)
+		&& (s[p + 4] == '#' || s[p - 1] == '#') && n++)
 	{
-		n++;
 		n = ft_check_each_tetribox(s, n, p + 3);
 		return (n == 4) ? n : -1;
 	}
-	else if (s[p] == '#' && s[p + 4] == '#' && n < 4)
+	else if (s[p] == '#' && s[p + 4] == '#' && n < 4 && n++)
 	{
-		n++;
 		n = ft_check_each_tetribox(s, n, p + 4);
 		return (n == 4) ? n : -1;
 	}
