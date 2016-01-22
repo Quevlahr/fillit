@@ -54,7 +54,9 @@ static int		ft_check_each_tetribox(char *s, int n, int p)
 		return (n == 4) ? n : -1;
 	}
 	else if (s[p] == '#' && s[p + 2] == '#' && n < 4 && (p / 4 != (p + 2) / 4)
-		&& (s[p + 3] == '#' || s[p - 1] == '#') && n++)
+		&& ((s[p + 3] == '#' && s[p + 4] == '#') ||
+			(s[p - 1] == '#' && s[p - 2] == '#') ||
+			(s[p - 1] == '#' && s[p + 3] == '#')) && n++)
 	{
 		n = ft_check_each_tetribox(s, n, p + 2);
 		return (n == 4) ? n : -1;

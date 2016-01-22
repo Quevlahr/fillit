@@ -54,9 +54,9 @@ static int			ft_launcher(char *string)
 	forms = (char **)malloc(sizeof(char *) * ft_strlen((string) + 1) / 21);
 	grid = ft_memalloc(size.squ * size.squ + 1);
 	ft_memset(grid, '.', size.squ * size.squ);
-	ft_check_form_launcher(string);
 	splited_string = ft_split_string(string, size.tetri);
 	ft_check_content_launcher(splited_string, size.tetri);
+	ft_check_form_launcher(string);
 	ft_extract_forms(splited_string, ft_strlen((string) + 1) / 21, forms);
 	ft_launch_resolv(grid, forms, size);
 	ft_strdel(&grid);

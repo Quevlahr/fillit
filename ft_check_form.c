@@ -29,14 +29,10 @@ static void			ft_check_helper(char *str, int i)
 ** not 4 x 5, just 4 x 4
 */
 
-static void			ft_check_form_lines_columns(char *str)
+static void			ft_check_form_lines_columns(char *str, int i, int len)
 {
-	int		i;
-	int		len;
 	int		column;
 
-	i = 0;
-	len = 0;
 	column = 0;
 	while (str[i])
 	{
@@ -49,7 +45,8 @@ static void			ft_check_form_lines_columns(char *str)
 			ft_error();
 		else if (str[i] == '\n' && column == 0 && len == 4)
 			len = 0;
-		else if (len > 3)
+		else if (len > 3 || (len < 3 && str[i] == '\n' &&
+			(str[i + 1] == '\n' || str[i + 1] == '\0')))
 			ft_error();
 		column == 4 ? len++ : 0;
 		column == 4 ? column = 0 : 0;
@@ -75,5 +72,5 @@ void				ft_check_form_launcher(char *str)
 		else
 			ft_error();
 	}
-	ft_check_form_lines_columns(str);
+	ft_check_form_lines_columns(str, 0, 0);
 }
