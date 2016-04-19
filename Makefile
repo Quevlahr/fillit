@@ -6,7 +6,7 @@
 #    By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/03 15:48:47 by tbouder           #+#    #+#              #
-#    Updated: 2016/01/04 10:49:04 by tbouder          ###   ########.fr        #
+#    Updated: 2016/01/22 19:33:13 by quroulon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC 		= 	ft_launcher.c \
 LIB			=	ft_lib.c ft_lib_two.c ft_lib_three.c
 
 OBJ			=	$(SRC:.c=.o) $(LIB:.c=.o)
+OBJ2		=	$(wildcard *.gch)
 
 HEADER 		=	fillit.h
 
@@ -39,7 +40,7 @@ $(NAME):
 
 .SILENT : clean
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ2)
 
 .SILENT : fclean
 fclean: clean
